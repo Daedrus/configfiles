@@ -34,7 +34,7 @@
 
 ! white
 *.color7:       #93a1a1
-*.color15:      #fdf6e3p
+*.color15:      #fdf6e3
 
 URxvt.font: xft:MesloLGS NF:size=11
 URxvt.scrollBar: false
