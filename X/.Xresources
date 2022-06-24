@@ -37,3 +37,4 @@
 *.color15:      #fdf6e3p
 
 URxvt.font: xft:MesloLGS NF:size=11
+URxvt.scrollBar: false
