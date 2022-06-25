@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: testvm_vmware
   become: true
   vars:
     username: vagrant
@@ -25,6 +25,9 @@
       vars:
         - keyboard_model: pc105
         - keyboard_layout: se
+    - name: Set timezone to Europe/Stockholm
+      timezone:
+        name: Europe/Stockholm
     - name: Set zsh as default shell
       ansible.builtin.user:
         name: "{{ username }}"
