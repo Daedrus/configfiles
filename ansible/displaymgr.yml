@@ -4,3 +4,17 @@
     name:
       - sddm
     update_cache: true
+- name: Generate sddm default configuration
+  ansible.builtin.shell:
+    cmd: sddm --example-config >> /etc/sddm.conf
+- name: Clone catppuccin theme
+  ansible.builtin.git:
+    repo: https://github.com/catppuccin/sddm.git
+    dest: /usr/share/sddm/themes/catppuccin/
+    clone: true
+    version: main
+- name: Change sddm config to use catppuccin theme
+  ansible.builtin.lineinfile:
+    path: /etc/sddm.conf
+    regexp: '^Current='
+    line: Current=catppuccin
