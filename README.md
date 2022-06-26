@@ -81,7 +81,7 @@ The reason for that seems to be that the SSH connection can timeout so the .cfg
 file changes the timeout settings.
 
 
-### Configure your hosts file (aka the list of machines you want to configure)
+### Create your hosts file (aka the list of machines you want to provision)
 
 There are many ways to set up the key, the easiest one seems to be to just
 point to the Vagrant private key generated for that vm.
