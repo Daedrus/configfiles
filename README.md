@@ -71,6 +71,15 @@ We will provision this machine using ansible below
 > ansible-galaxy install gantsign.keyboard
 ```
 
+### Set up ansible.cfg
+
+Put the ansible.cfg file from the ansible/ folder in one of the locations
+described [here](https://docs.ansible.com/ansible/latest/reference_appendices/config.html)
+
+Note that you only have to do this if ansible randomly hangs when you use it.
+The reason for that seems to be that the SSH connection can timeout so the .cfg
+file changes the timeout settings.
+
 
 ### Configure your hosts file (aka the list of machines you want to configure)
 
