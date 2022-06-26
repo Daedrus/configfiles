@@ -17,6 +17,18 @@ vagrant-vmware-desktop (3.0.1, global)
 See the vagrant/ folder. VirtualBox seems to be a bit buggy at the moment I am
 writing this so I recommend going for the VMWare machine.
 
+You might have to change the bridge in the Vagrantfile
+```
+config.vm.network "public_network", bridge: "Intel(R) Wireless-AC 9560 160MHz", auto_config: true
+```
+
+I recommend removing the bridge entirely, in that way vagrant will ask which
+one to use. Once you figured out which one it is, just come back and change
+the line accordingly. In other words, change the line above to this:
+```
+config.vm.network "public_network", auto_config: true
+```
+
 ### Start the machine while in that folder
 ```
 > vagrant up
