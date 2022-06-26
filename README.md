@@ -14,17 +14,23 @@ vagrant-vmware-desktop (3.0.1, global)
 
 ### Choose one of the Vagrantfiles in this repo and place it in a folder
 
+See the vagrant/ folder. VirtualBox seems to be a bit buggy at the moment I am
+writing this so I recommend going for the VMWare machine.
+
 ### Start the machine while in that folder
 ```
 > vagrant up
 ```
 
-### It will be an "empty" machine based on the box in the Vagrantfile
-### We will provision this machine using ansible below
+It will be an "empty" machine based on the box in the Vagrantfile
 
-### To ssh to the machine (do this to get its IP, you'll need it)
+We will provision this machine using ansible below
+
+### SSH to the machine (do this to get its IP, you'll need it)
 ```
 > vagrant ssh
+...
+--> ip a
 ```
 
 ### To restart the machine (do this after it's been provisioned)
