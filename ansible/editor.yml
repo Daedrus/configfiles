@@ -3,6 +3,7 @@
   ansible.builtin.apt:
     name:
       - neovim
+      - nodejs # Required for coc plugin
     update_cache: true
 - name: Set nvim as the default editor
   community.general.alternatives:
