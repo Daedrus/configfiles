@@ -6,28 +6,36 @@ way of testing them using vagrant.
 ## Vagrant setup
 
 ### Install vagrant and the following plugins
-
+```
 > vagrant plugin list
 vagrant-vbguest (0.30.0, global)
 vagrant-vmware-desktop (3.0.1, global)
+```
 
 ### Choose one of the Vagrantfiles in this repo and place it in a folder
 
 ### Start the machine while in that folder
-
+```
 > vagrant up
+```
 
 ### It will be an "empty" machine based on the box in the Vagrantfile
 ### We will provision this machine using ansible below
 
 ### To ssh to the machine (do this to get its IP, you'll need it)
+```
 > vagrant ssh
+```
 
 ### To restart the machine (do this after it's been provisioned)
+```
 > vagrant reload
+```
 
 ### To later stop the machine
+```
 > vagrant halt
+```
 
 
 
@@ -35,11 +43,15 @@ vagrant-vmware-desktop (3.0.1, global)
 ## Ansible setup
 
 ### Install ansible
+```
 > sudo apt install ansible
+```
 
 ### Install some custom ansible roles/collections
+```
 > ansible-galaxy install gantsign.oh-my-zsh
 > ansible-galaxy install gantsign.keyboard
+```
 
 
 ### Configure your hosts file (aka the list of machines you want to configure)
@@ -50,18 +62,22 @@ point to the Vagrant private key generated for that vm.
 Example /etc/ansible/hosts file assuming a Vagrant vm called testvm_vmware
 which got assigned the IP address 192.168.0.106:
 
+```
 [servers]
 testvm_vmware ansible_host=192.168.0.106 ansible_ssh_private_key_file=~/.ssh/testvm_vmware.key
 
 [all:vars]
 ansible_python_interpreter=/usr/bin/python3
+```
 
 
 ### Make sure that the permissions are restrictive on ~/.ssh/testvm_vmware.key
 
 Ansible will complain anyway if this isn't done
 
+```
 > chmod 600 ~/.ssh/testvm_vmware.key
+```
 
 
 ### SSH config
@@ -69,11 +85,14 @@ Ansible will complain anyway if this isn't done
 Since the testvm_vmware machine only has user 'vagrant' you'll need something
 like this for ansible to connect through ssh:
 
-> cat ~/.ssh/config                                                                                                                                                  1m 7s
+```
+> cat ~/.ssh/config
 Host 192.168.0.106
     User vagrant
+```
 
 
 ### Finally, to provision the machine:
-
+```
 > ansible-playbook main.yml
+```
