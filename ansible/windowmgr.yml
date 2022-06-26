@@ -1,28 +1,39 @@
 ---
-- name: Install i3
-  ansible.builtin.apt:
-    name:
-      - i3
-    update_cache: true
-- name: Set i3 as the default window manager
-  community.general.alternatives:
-    name: x-window-manager
-    path: /usr/bin/i3
-- name: Create configuration folder
-  become_user: "{{ username }}"
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: '0755'
-  loop:
-    - "/home/{{ username }}/.config/i3/"
-- name: Copy configuration files
-  become_user: "{{ username }}"
-  ansible.builtin.get_url:
-    url: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  loop:
-    - {src: "{{ configfilerepo }}/i3/config",
-       dest: "/home/{{ username }}/.config/i3/"}
-    - {src: "{{ configfilerepo }}/i3/i3status.conf",
-       dest: "/home/{{ username }}/.config/i3/"}
+- name: Set up window manager
+  tags: windowmgr
+  block:
+    - name: Install i3
+      ansible.builtin.apt:
+        name:
+          - i3
+        update_cache: true
+      tags:
+        - windowmgr_packages
+    - name: Set i3 as the default window manager
+      community.general.alternatives:
+        name: x-window-manager
+        path: /usr/bin/i3
+      tags:
+        - windowmgr_default
+    - name: Create configuration folder
+      become_user: "{{ username }}"
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - "/home/{{ username }}/.config/i3/"
+      tags:
+        - windowmgr_configurationdir
+    - name: Copy configuration files
+      become_user: "{{ username }}"
+      ansible.builtin.get_url:
+        url: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - {src: "{{ configfilerepo }}/i3/config",
+           dest: "/home/{{ username }}/.config/i3/"}
+        - {src: "{{ configfilerepo }}/i3/i3status.conf",
+           dest: "/home/{{ username }}/.config/i3/"}
+      tags:
+        - windowmgr_configuration

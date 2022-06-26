@@ -1,17 +1,26 @@
 ---
-- name: Install X11 packages
-  ansible.builtin.apt:
-    name:
-      - xinit
-      - x11-utils
-      - x11-xserver-utils
-    update_cache: true
-- name: Set Swedish as the default keyboard layout
-  ansible.builtin.include_role:
-    name: "gantsign.keyboard"
-  vars:
-    - keyboard_model: pc105
-    - keyboard_layout: se
-- name: Set timezone to Europe/Stockholm
-  timezone:
-    name: Europe/Stockholm
+- name: Basic setup
+  tags: basic
+  block:
+    - name: Install X11 packages
+      ansible.builtin.apt:
+        name:
+          - xinit
+          - x11-utils
+          - x11-xserver-utils
+        update_cache: true
+      tags:
+        - basic_packages
+    - name: Set Swedish as the default keyboard layout
+      ansible.builtin.include_role:
+        name: "gantsign.keyboard"
+      vars:
+        - keyboard_model: pc105
+        - keyboard_layout: se
+      tags:
+        - basic_kblayout
+    - name: Set timezone to Europe/Stockholm
+      timezone:
+        name: Europe/Stockholm
+      tags:
+        - basic_timezone

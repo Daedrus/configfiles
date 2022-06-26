@@ -1,20 +1,31 @@
 ---
-- name: Install sddm
-  ansible.builtin.apt:
-    name:
-      - sddm
-    update_cache: true
-- name: Generate sddm default configuration
-  ansible.builtin.shell:
-    cmd: sddm --example-config >> /etc/sddm.conf
-- name: Clone catppuccin theme
-  ansible.builtin.git:
-    repo: https://github.com/catppuccin/sddm.git
-    dest: /usr/share/sddm/themes/catppuccin/
-    clone: true
-    version: main
-- name: Change sddm config to use catppuccin theme
-  ansible.builtin.lineinfile:
-    path: /etc/sddm.conf
-    regexp: '^Current='
-    line: Current=catppuccin
+- name: Set up display manager
+  tags: displaymgr
+  block:
+    - name: Install sddm
+      ansible.builtin.apt:
+        name:
+          - sddm
+        update_cache: true
+      tags:
+        - displaymgr_packages
+    - name: Generate sddm default configuration
+      ansible.builtin.shell:
+        cmd: sddm --example-config >> /etc/sddm.conf
+      tags:
+        - displaymgr_configuration
+    - name: Clone catppuccin theme
+      ansible.builtin.git:
+        repo: https://github.com/catppuccin/sddm.git
+        dest: /usr/share/sddm/themes/catppuccin/
+        clone: true
+        version: main
+      tags:
+        - displaymgr_clonecatppuccin
+    - name: Change sddm config to use catppuccin theme
+      ansible.builtin.lineinfile:
+        path: /etc/sddm.conf
+        regexp: '^Current='
+        line: Current=catppuccin
+      tags:
+        - displaymgr_usecatppuccin

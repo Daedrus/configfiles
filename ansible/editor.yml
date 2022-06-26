@@ -1,44 +1,59 @@
 ---
-- name: Install nvim
-  ansible.builtin.apt:
-    name:
-      - neovim
-      - nodejs # Required for coc plugin
-    update_cache: true
-- name: Set nvim as the default editor
-  community.general.alternatives:
-    name: "{{ item }}"
-    path: /usr/bin/nvim
-  loop:
-    - editor
-    - vim
-    - vi
-- name: Make sure directory structure is OK for vim-plug
-  become_user: "{{ username }}"
-  ansible.builtin.file:
-    path: "/home/{{ username }}/.local/share/nvim/site/autoload"
-    state: directory
-    mode: '0755'
-- name: Install vim-plug
-  become_user: "{{ username }}"
-  ansible.builtin.get_url:
-    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    dest: "/home/{{ username }}/.local/share/nvim/site/autoload/"
-- name: Create configuration folder
-  become_user: "{{ username }}"
-  ansible.builtin.file:
-    path: "{{ item }}"
-    state: directory
-    mode: '0755'
-  loop:
-    - "/home/{{ username }}/.config/nvim/"
-- name: Copy configuration file
-  become_user: "{{ username }}"
-  ansible.builtin.get_url:
-    url: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  loop:
-    - {src: "{{ configfilerepo }}/nvim/init.vim",
-       dest: "/home/{{ username }}/.config/nvim/"}
-    - {src: "{{ configfilerepo }}/nvim/coc-settings.json",
-       dest: "/home/{{ username }}/.config/nvim/"}
+- name: Set up editor
+  tags: editor
+  block:
+    - name: Install nvim
+      ansible.builtin.apt:
+        name:
+          - neovim
+          - nodejs # Required for coc plugin
+        update_cache: true
+      tags:
+        - editor_packages
+    - name: Set nvim as the default editor
+      community.general.alternatives:
+        name: "{{ item }}"
+        path: /usr/bin/nvim
+      loop:
+        - editor
+        - vim
+        - vi
+      tags:
+        - editor_default
+    - name: Make sure directory structure is OK for vim-plug
+      become_user: "{{ username }}"
+      ansible.builtin.file:
+        path: "/home/{{ username }}/.local/share/nvim/site/autoload"
+        state: directory
+        mode: '0755'
+      tags:
+        - editor_pluginmanagerdir
+    - name: Install vim-plug
+      become_user: "{{ username }}"
+      ansible.builtin.get_url:
+        url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+        dest: "/home/{{ username }}/.local/share/nvim/site/autoload/"
+      tags:
+        - editor_pluginmanager
+    - name: Create configuration folder
+      become_user: "{{ username }}"
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - "/home/{{ username }}/.config/nvim/"
+      tags:
+        - editor_configurationdir
+    - name: Copy configuration file
+      become_user: "{{ username }}"
+      ansible.builtin.get_url:
+        url: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - {src: "{{ configfilerepo }}/nvim/init.vim",
+           dest: "/home/{{ username }}/.config/nvim/"}
+        - {src: "{{ configfilerepo }}/nvim/coc-settings.json",
+           dest: "/home/{{ username }}/.config/nvim/"}
+      tags:
+        - editor_configuration
