@@ -4,6 +4,10 @@
     name:
       - i3
     update_cache: true
+- name: Set i3 as the default window manager
+  community.general.alternatives:
+    name: x-window-manager
+    path: /usr/bin/i3
 - name: Create configuration folder
   become_user: "{{ username }}"
   ansible.builtin.file:
