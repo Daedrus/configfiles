@@ -57,3 +57,10 @@
            dest: "/home/{{ username }}/.config/nvim/"}
       tags:
         - editor_configuration
+    - name: Install plugins
+      become_user: "{{ username }}"
+      ansible.builtin.shell:
+        cmd: nvim +PlugInstall +qall
+        creates: "/home/{{ username }}/.local/share/nvim/plugged"
+      tags:
+        - editor_installplugins
