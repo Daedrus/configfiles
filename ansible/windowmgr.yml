@@ -1,0 +1,24 @@
+---
+- name: Install i3
+  ansible.builtin.apt:
+    name:
+      - i3
+    update_cache: true
+- name: Create configuration folder
+  become_user: "{{ username }}"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0755'
+  loop:
+    - "/home/{{ username }}/.config/i3/"
+- name: Copy configuration files
+  become_user: "{{ username }}"
+  ansible.builtin.get_url:
+    url: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - {src: "{{ configfilerepo }}/i3/config",
+       dest: "/home/{{ username }}/.config/i3/"}
+    - {src: "{{ configfilerepo }}/i3/i3status.conf",
+       dest: "/home/{{ username }}/.config/i3/"}

@@ -1,0 +1,19 @@
+---
+- hosts: testvm_vmware
+  become: true
+  vars:
+    username: vagrant
+    configfilerepo: "https://raw.githubusercontent.com/Daedrus/configfiles/main"
+  tasks:
+    - name: Basic setup
+      ansible.builtin.include_tasks: basic.yml
+    - name: Set up terminal
+      ansible.builtin.include_tasks: terminal.yml
+    - name: Set up shell
+      ansible.builtin.include_tasks: shell.yml
+    - name: Set up editor
+      ansible.builtin.include_tasks: editor.yml
+    - name: Set up display manager
+      ansible.builtin.include_tasks: displaymgr.yml
+    - name: Set up window manager
+      ansible.builtin.include_tasks: windowmgr.yml

@@ -1,0 +1,54 @@
+---
+- name: Install zsh
+  ansible.builtin.apt:
+    name:
+      - zsh
+    update_cache: true
+- name: Set zsh as default shell
+  ansible.builtin.user:
+    name: "{{ username }}"
+    shell: /bin/zsh
+- name: Install oh-my-zsh
+  ansible.builtin.include_role:
+    name: "gantsign.oh-my-zsh"
+  vars:
+    users:
+      - username: "{{ username }}"
+        oh_my_zsh:
+          theme: powerlevel10k/powerlevel10k
+          plugins:
+            - git
+- name: Create the ~/.fonts directory
+  become_user: "{{ username }}"
+  ansible.builtin.file:
+    path: "/home/{{ username }}/.fonts/"
+    state: directory
+    mode: '0755'
+- name: Download MesloLGS fonts
+  become_user: "{{ username }}"
+  ansible.builtin.get_url:
+    url: "{{ item }}"
+    dest: "/home/{{ username }}/.fonts/"
+  loop:
+    - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+    - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+    - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+    - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+- name: Install Powerlevel10k zsh theme
+  become_user: "{{ username }}"
+  ansible.builtin.git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: "/home/{{ username }}/.oh-my-zsh/custom/themes/powerlevel10k"
+    clone: true
+    depth: 1
+    version: master
+- name: Copy configuration files
+  become_user: "{{ username }}"
+  ansible.builtin.get_url:
+    url: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+  loop:
+    - {src: "{{ configfilerepo }}/zsh/.zshrc",
+       dest: "/home/{{ username }}/"}
+    - {src: "{{ configfilerepo }}/p10k/.p10k.zsh",
+       dest: "/home/{{ username }}/"}

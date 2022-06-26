@@ -1,0 +1,6 @@
+---
+- name: Install sddm
+  ansible.builtin.apt:
+    name:
+      - sddm
+    update_cache: true
