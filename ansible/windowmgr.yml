@@ -1,5 +1,66 @@
 ---
-- name: Set up window manager
+- name: Set up i3-gaps window manager
+  tags: windowmgr
+  block:
+    - name: Register the Regolith public key
+      ansible.builtin.shell:
+        cmd: >
+          wget -qO - https://regolith-desktop.io/regolith.key |
+          gpg --dearmor |
+          tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
+      args:
+        warn: no
+      tags:
+        - windowmgr_regolithkey
+    - name: Add the Regolith repo URL to apt
+      ansible.builtin.shell:
+        cmd: >
+          echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg]
+          https://regolith-desktop.io/release-ubuntu-jammy-amd64 jammy main" |
+          tee /etc/apt/sources.list.d/regolith.list
+      args:
+        warn: no
+      tags:
+        - windowmgr_regolithrepo
+    - name: Install i3-gaps
+      ansible.builtin.apt:
+        name:
+          - i3-gaps
+        update_cache: true
+      tags:
+        - windowmgr_packages
+    # - name: Set i3-gaps as the default window manager
+    #   community.general.alternatives:
+    #     name: x-window-manager
+    #     path: /usr/bin/i3
+    #   tags:
+    #     - windowmgr_default
+    - name: Create configuration folder
+      become_user: "{{ username }}"
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - "/home/{{ username }}/.config/i3/"
+      tags:
+        - windowmgr_configurationdir
+    - name: Copy configuration files
+      become_user: "{{ username }}"
+      ansible.builtin.get_url:
+        url: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+      loop:
+        - {src: "{{ configfilerepo }}/i3-gaps/config",
+           dest: "/home/{{ username }}/.config/i3/"}
+        - {src: "{{ configfilerepo }}/i3-gaps/i3status.conf",
+           dest: "/home/{{ username }}/.config/i3/"}
+      tags:
+        - windowmgr_configuration
+  when:
+    windowmgr == "i3-gaps"
+
+- name: Set up i3 window manager
   tags: windowmgr
   block:
     - name: Install i3
@@ -37,3 +98,5 @@
            dest: "/home/{{ username }}/.config/i3/"}
       tags:
         - windowmgr_configuration
+  when:
+    windowmgr == "i3"
