@@ -18,3 +18,5 @@
       ansible.builtin.import_tasks: displaymgr.yml
     - name: Set up window manager
       ansible.builtin.import_tasks: windowmgr.yml
+    - name: Reboot the machine
+      ansible.builtin.reboot:
