@@ -4,6 +4,7 @@
   vars:
     username: vagrant
     configfilerepo: "https://raw.githubusercontent.com/Daedrus/configfiles/main"
+    windowmgr: "i3-gaps"
   tasks:
     - name: Basic setup
       ansible.builtin.import_tasks: basic.yml
