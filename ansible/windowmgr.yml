@@ -131,6 +131,6 @@
       become_user: "{{ username }}"
       ansible.builtin.lineinfile:
         path: "/home/{{ username }}/.config/i3/config"
-        line: exec_always feh --recursive --bg-scale --no-fehbg --randomize ~/.wallpapers/*
+        line: exec_always --no-startup-id feh --recursive --bg-scale --no-fehbg --randomize ~/.wallpapers/*
       tags:
         - windowmgr_wallpaperhandler_configpatch
