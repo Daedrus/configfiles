@@ -100,3 +100,37 @@
         - windowmgr_configuration
   when:
     windowmgr == "i3"
+
+- name: Install wallpaper handler and wallpapers
+  tags: windowmgr
+  block:
+    - name: Install feh
+      ansible.builtin.apt:
+        name:
+          - feh
+        update_cache: true
+      tags:
+        - windowmgr_wallpaperhandler
+    - name: Create wallpapers folder
+      become_user: "{{ username }}"
+      ansible.builtin.file:
+        path: "/home/{{ username }}/.wallpapers"
+        state: directory
+        mode: '0755'
+      tags:
+        - windowmgr_wallpapersdir
+    - name: Download wallpapers
+      become_user: "{{ username }}"
+      ansible.builtin.unarchive:
+        src: https://github.com/catppuccin/wallpapers/archive/refs/heads/main.zip
+        dest: "/home/{{ username }}/.wallpapers"
+        remote_src: yes
+      tags:
+        - windowmgr_wallpapers
+    - name: Patch windowmgr config to run feh
+      become_user: "{{ username }}"
+      ansible.builtin.lineinfile:
+        path: "/home/{{ username }}/.config/i3/config"
+        line: exec_always feh --recursive --bg-scale --no-fehbg --randomize ~/.wallpapers/*
+      tags:
+        - windowmgr_wallpaperhandler_configpatch
