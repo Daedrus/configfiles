@@ -11,6 +11,7 @@ set softtabstop=4           " see multiple spaces as tabstops so <BS> does the r
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Remap keys for gotos

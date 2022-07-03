@@ -5,6 +5,7 @@
     - name: Install X11 packages
       ansible.builtin.apt:
         name:
+          - fzf
           - xinit
           - x11-utils
           - x11-xserver-utils
