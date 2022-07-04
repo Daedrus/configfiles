@@ -2,13 +2,15 @@
 - name: Basic setup
   tags: basic
   block:
-    - name: Install X11 packages
+    - name: Install basic packages
       ansible.builtin.apt:
         name:
+          - acl # For easy provisioning when using a non-vagrant user
           - fzf
           - xinit
           - x11-utils
           - x11-xserver-utils
+        upgrade: true
         update_cache: true
       tags:
         - basic_packages
@@ -25,3 +27,28 @@
         name: Europe/Stockholm
       tags:
         - basic_timezone
+
+- name: Create own user
+  tags: basic
+  block:
+    - name: Create user
+      ansible.builtin.user:
+        name: "{{ username }}"
+        password: "{{ password | password_hash('sha512') }}"
+      tags:
+        - basic_user
+    - name: Create user sudoers file
+      ansible.builtin.file:
+        path: "/etc/sudoers.d/{{ username }}"
+        state: touch
+      tags:
+        - basic_sudoersfile
+    - name: Don't require password for user when running sudo commands
+      ansible.builtin.lineinfile:
+        path: "/etc/sudoers.d/{{ username }}"
+        line: "{{ username }} ALL=(ALL) NOPASSWD: ALL"
+        state: present
+      tags:
+        - basic_nopasswd
+  when:
+    username != "vagrant"
