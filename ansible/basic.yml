@@ -2,6 +2,12 @@
 - name: Basic setup
   tags: basic
   block:
+    - name: Upgrade all existing packages
+      ansible.builtin.apt:
+        update_cache: true
+        upgrade: true
+      tags:
+        - basic_upgradepackages
     - name: Install basic packages
       ansible.builtin.apt:
         name:
@@ -10,7 +16,6 @@
           - xinit
           - x11-utils
           - x11-xserver-utils
-        upgrade: true
         update_cache: true
       tags:
         - basic_packages
