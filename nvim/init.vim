@@ -12,6 +12,7 @@ set softtabstop=4           " see multiple spaces as tabstops so <BS> does the r
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf.vim'
+Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 call plug#end()
 
 " Remap keys for gotos
@@ -19,3 +20,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Use catppuccin mocha theme
+let g:catppuccin_flavour = "mocha"
+colorscheme catppuccin
