@@ -7,6 +7,7 @@
         name:
           - neovim
           - nodejs # Required for coc plugin
+          - ccls # C/C++ language server
         update_cache: true
       tags:
         - editor_packages
