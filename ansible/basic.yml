@@ -13,6 +13,7 @@
         name:
           - acl # For easy provisioning when using a non-vagrant user
           - fzf
+          - firefox
           - rlwrap
           - cmake
           - xinit
