@@ -17,6 +17,14 @@ Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 call plug#end()
 
 
+"
+" fzf settings
+"
+
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-g> :GFiles<CR>
+nnoremap <silent> <C-o> :Buffers<CR>
+
 
 "
 " coc settings
