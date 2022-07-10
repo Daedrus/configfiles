@@ -9,10 +9,14 @@ set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
 set softtabstop=4           " see multiple spaces as tabstops so <BS> does the right thing
 
+let mapleader = " "         " change leader to space (default is backslash)
+
+
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'phaazon/hop.nvim'
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 call plug#end()
 
@@ -70,6 +74,17 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+
+"
+" hop settings
+"
+
+lua require'hop'.setup()
+
+nnoremap <leader>s :HopChar1<CR>
+nnoremap <leader>l :HopLine<CR>
+nnoremap <leader>w :HopWord<CR>
 
 
 "
