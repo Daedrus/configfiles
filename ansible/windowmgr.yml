@@ -134,3 +134,24 @@
         line: exec_always --no-startup-id feh --recursive --bg-scale --no-fehbg --randomize ~/.wallpapers/*
       tags:
         - windowmgr_wallpaperhandler_configpatch
+
+- name: Install clipboard manager
+  tags: windowmgr
+  block:
+    - name: Install autocutsel
+      ansible.builtin.apt:
+        name:
+          - autocutsel
+        update_cache: true
+      tags:
+        - windowmgr_clipboardmgr
+    - name: Patch windowmgr config to run clipboard manager
+      become_user: "{{ username }}"
+      ansible.builtin.lineinfile:
+        path: "/home/{{ username }}/.config/i3/config"
+        line: "{{ item }}"
+      loop:
+        - "exec --no-startup-id autocutsel -s PRIMARY -f"
+        - "exec --no-startup-id autocutsel -s CLIPBOARD -f"
+      tags:
+        - windowmgr_clipboardmgr_configpatch
