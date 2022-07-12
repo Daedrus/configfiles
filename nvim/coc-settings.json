@@ -2,13 +2,14 @@
 "languageserver": {
   "ccls": {
     "command": "ccls",
+    "args": ["-log-file=/tmp/ccls.log"],
     "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
     "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
     "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        }
+      "cache": {
+        "directory": "/tmp/ccls"
       }
+    }
   }
 }
 }
