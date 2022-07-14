@@ -58,3 +58,10 @@ URxvt.url-launcher: firefox
 !! vi-mode text selection
 URxvt.perl-ext-common: default,keyboard-select
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+!! Disable autoscrolling on new output unless you're
+!! at the bottom of the output. Pressing any key will
+!! take you to the bottom automatically
+URxvt.scrollTtyOutput: false
+URxvt.scrollWithBuffer: true
+URxvt.scrollTtyKeypress: true
