@@ -2,19 +2,60 @@
 - name: Set up editor
   tags: editor
   block:
-    - name: Install nvim
+    - name: Install nvim build dependencies
       ansible.builtin.apt:
         name:
-          - neovim
+          - ninja-build
+          - gettext
+          - libtool
+          - libtool-bin
+          - autoconf
+          - automake
+          - cmake
+          - g++
+          - pkg-config
+          - unzip
+          - curl
+          - doxygen
+        update_cache: true
+      tags:
+        - editor_build_dependencies
+    - name: Install nvim plugin dependencies
+      ansible.builtin.apt:
+        name:
           - nodejs # Required for coc plugin
           - ccls # C/C++ language server
         update_cache: true
       tags:
-        - editor_packages
+        - editor_plugin_dependencies
+    - name: Clone nvim repo (get the stable version)
+      become_user: "{{ username }}"
+      ansible.builtin.git:
+        repo: https://github.com/neovim/neovim.git
+        dest: "/home/{{ username }}/.local/share/nvim/source/"
+        clone: true
+        version: stable
+      tags:
+        - editor_cloneneovim
+    - name: Build nvim
+      become_user: "{{ username }}"
+      ansible.builtin.command:
+        cmd: "make CMAKE_BUILD_TYPE=Release"
+      args:
+        chdir: "/home/{{ username }}/.local/share/nvim/source/"
+      tags:
+        - editor_buildneovim
+    - name: Install nvim
+      ansible.builtin.command:
+        cmd: "make install"
+      args:
+        chdir: "/home/{{ username }}/.local/share/nvim/source/"
+      tags:
+        - editor_installneovim
     - name: Set nvim as the default editor
       community.general.alternatives:
         name: "{{ item }}"
-        path: /usr/bin/nvim
+        path: "/usr/local/bin/nvim"
       loop:
         - editor
         - vim
