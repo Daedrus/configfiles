@@ -17,6 +17,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'phaazon/hop.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 Plug 'catppuccin/nvim', {'as': 'catppuccin'}
 call plug#end()
 
@@ -87,9 +89,29 @@ nnoremap <leader>w :HopWord<CR>
 
 
 "
-" catppuccin settings
+" bufferline settings
 "
 
-" Use catppuccin mocha theme
+set termguicolors
+lua << EOF
+require('bufferline').setup({
+  options = {
+    show_buffer_close_icons = false,
+    show_close_icon = false
+  }
+})
+EOF
+
+nnoremap <silent> gb :BufferLinePick<CR>
+nnoremap <silent> gc :BufferLinePickClose<CR>
+
+
+"
+" catppuccin settings
+"
+"
+
+lua require'catppuccin'.setup()
+
 let g:catppuccin_flavour = "mocha"
 colorscheme catppuccin
