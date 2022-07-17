@@ -102,7 +102,7 @@
     - name: Install plugins
       become_user: "{{ username }}"
       ansible.builtin.shell:
-        cmd: nvim +PlugInstall +qall
+        cmd: nvim --headless +PlugInstall +qall
         creates: "/home/{{ username }}/.local/share/nvim/plugged"
       tags:
         - editor_installplugins
