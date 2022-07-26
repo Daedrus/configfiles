@@ -5,7 +5,7 @@
     - name: Register the Regolith public key
       ansible.builtin.shell:
         cmd: >
-          wget -qO - https://regolith-desktop.io/regolith.key |
+          wget -qO - https://regolith-desktop.org/regolith.key |
           gpg --dearmor |
           tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
       args:
@@ -16,7 +16,7 @@
       ansible.builtin.shell:
         cmd: >
           echo deb "[arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg]
-          https://regolith-desktop.io/release-ubuntu-jammy-amd64 jammy main" |
+          https://regolith-desktop.org/release-ubuntu-jammy-amd64 jammy main" |
           tee /etc/apt/sources.list.d/regolith.list
       args:
         warn: no
