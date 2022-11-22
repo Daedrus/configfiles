@@ -23,7 +23,6 @@
     - name: Install nvim plugin dependencies
       ansible.builtin.apt:
         name:
-          - nodejs # Required for coc plugin
           - ccls # C/C++ language server
         update_cache: true
       tags:
@@ -94,8 +93,6 @@
         dest: "{{ item.dest }}"
       loop:
         - {src: "{{ configfilerepo }}/nvim/init.vim",
-           dest: "/home/{{ username }}/.config/nvim/"}
-        - {src: "{{ configfilerepo }}/nvim/coc-settings.json",
            dest: "/home/{{ username }}/.config/nvim/"}
       tags:
         - editor_configuration
