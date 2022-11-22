@@ -14,18 +14,26 @@
         cmd: sddm --example-config >> /etc/sddm.conf
       tags:
         - displaymgr_configuration
-    - name: Clone catppuccin theme
+    - name: Clone catppuccin themes repo
+      become_user: "{{ username }}"
       ansible.builtin.git:
         repo: https://github.com/catppuccin/sddm.git
-        dest: /usr/share/sddm/themes/catppuccin/
+        dest: "/home/{{ username }}/.local/share/sddm/catppuccin_themes/"
         clone: true
         version: main
       tags:
         - displaymgr_clonecatppuccin
+    - name: Copy catppuccin mocha theme
+      ansible.builtin.copy:
+        src: "/home/{{ username }}/.local/share/sddm/catppuccin_themes/src/catppuccin-mocha"
+        dest: "/usr/share/sddm/themes/"
+        remote_src: true
+      tags:
+        - displaymgr_copycatppuccintheme
     - name: Change sddm config to use catppuccin theme
       ansible.builtin.lineinfile:
         path: /etc/sddm.conf
         regexp: '^Current='
-        line: Current=catppuccin
+        line: Current=catppuccin-mocha
       tags:
-        - displaymgr_usecatppuccin
+        - displaymgr_usecatppuccintheme
