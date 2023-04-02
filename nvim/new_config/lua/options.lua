@@ -6,8 +6,11 @@ vim.o.hlsearch = true
 -- Show matching brackets
 vim.o.showmatch = true
 
--- Make line numbers default
+-- Enable "hybrid" line number mode
+-- All lines show their relative number except for current line,
+-- which will show its absolute line number
 vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Disable mouse
 vim.o.mouse = ""

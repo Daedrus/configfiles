@@ -90,15 +90,15 @@ return require('packer').startup(function(use)
     end,
   }
 
-  -- Jump anywhere with as few keystrokes as possible
-  use {
-    'phaazon/hop.nvim',
-    branch = 'v2',
-  }
-
    -- Additional text objects via treesitter
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
+    after = 'nvim-treesitter',
+  }
+
+   -- First line in buffer is contextual
+  use {
+    'nvim-treesitter/nvim-treesitter-context',
     after = 'nvim-treesitter',
   }
 
