@@ -74,10 +74,7 @@ return require('packer').startup(function(use)
   }
 
   -- "gc" to comment visual regions/lines
-  use {
-    'numToStr/Comment.nvim',
-    opts = {}
-  }
+  use 'numToStr/Comment.nvim'
 
   -- Show help for keybinds
   use 'folke/which-key.nvim'
@@ -112,6 +109,11 @@ return require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make',
     cond = vim.fn.executable 'make' == 1
+  }
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
 
