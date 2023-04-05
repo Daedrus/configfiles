@@ -111,10 +111,14 @@ return require('packer').startup(function(use)
     cond = vim.fn.executable 'make' == 1
   }
 
+  -- Statusline
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
+
+  -- Session management
+  use 'rmagatti/auto-session'
 
 
   -- Automatically set up your configuration after cloning packer.nvim
