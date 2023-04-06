@@ -43,6 +43,11 @@ end
 --
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
+--
+--  Note that while linters and formatters _can_ be installed through Mason's menu, they can't
+--  be hardcoded in the config in same way as LSPs can below. For that, an alternative plugin
+--  such as jose-elias-alvarez/null-ls.nvim needs to be used. Not sure if there is a reasoning
+--  behind this or if the functionality will eventually be added to Mason.
 local servers = {
   clangd = {},
   pyright = {},
