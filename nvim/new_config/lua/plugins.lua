@@ -87,13 +87,13 @@ return require('packer').startup(function(use)
     end,
   }
 
-   -- Additional text objects via treesitter
+  -- Additional text objects via treesitter
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
   }
 
-   -- First line in buffer is contextual
+  -- First line in buffer is contextual
   use {
     'nvim-treesitter/nvim-treesitter-context',
     after = 'nvim-treesitter',
