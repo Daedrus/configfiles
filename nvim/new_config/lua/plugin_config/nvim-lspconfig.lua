@@ -50,8 +50,8 @@ end
 --  behind this or if the functionality will eventually be added to Mason.
 local servers = {
   clangd = {},
-  pyright = {},
-  rust_analyzer = {},
+  dockerls = {},
+  docker_compose_language_service = {},
   lua_ls = {
     Lua = {
       diagnostics = {
@@ -60,6 +60,8 @@ local servers = {
       },
     },
   },
+  pyright = {},
+  rust_analyzer = {},
   yamlls = {
     yaml = {
       keyOrdering = false,
