@@ -17,6 +17,9 @@ return require('packer').startup(function(use)
   -- Plugin manager
   use 'wbthomason/packer.nvim'
 
+  -- Run git commands without leaving neovim
+  use 'tpope/vim-fugitive'
+
   -- Pretty icons
   use 'kyazdani42/nvim-web-devicons'
 
