@@ -35,13 +35,6 @@ return require('packer').startup(function(use)
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
 
-  -- Buffer management
-  use {
-    'akinsho/bufferline.nvim',
-    tag = "v3.*",
-    requires = 'nvim-tree/nvim-web-devicons'
-  }
-
   -- Markdown preview
   use 'ellisonleao/glow.nvim'
 
