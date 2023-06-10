@@ -92,5 +92,3 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
-
-require('fidget').setup({})
