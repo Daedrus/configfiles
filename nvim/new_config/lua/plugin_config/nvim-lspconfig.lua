@@ -61,7 +61,13 @@ local servers = {
     },
   },
   pyright = {},
-  rust_analyzer = {},
+  rust_analyzer = {
+    ['rust-analyzer'] = {
+      check = {
+        allTargets = false,
+      }
+    }
+  },
   yamlls = {
     yaml = {
       keyOrdering = false,
