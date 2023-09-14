@@ -30,8 +30,8 @@
       configfiles_repo = pkgs.fetchFromGitHub {
         owner = "Daedrus";
         repo = "configfiles";
-        rev = "c87dde8";
-        sha256 = "ypM/043AXNkhuPIVnL/L15B69SGjXnGvJXpIAKTAoro=";
+        rev = "5b81c12";
+        sha256 = "GC3RWLV3v13mLHqesqlnmTedK2oi/+UwwL28CU2FXm8=";
       };
     in {
       # Wallpaper
@@ -64,6 +64,18 @@
       ".config/nvim/lua/".source =
         configfiles_repo + "/nvim/lua/";
     };
+
+  # Let nix manage picom since I'm only interested in rounded corners
+  services.picom = {
+    enable = true;
+    settings = {
+      corner-radius = 12.0;
+      rounded-corners-exclude = [
+        "class_g = 'i3bar'"
+        "class_g = 'firefox'"
+      ];
+    };
+  };
 
   # zsh and oh-my-zsh are currently easier to manage from nix since my
   # configuration isn't that complex; nevertheless, even with a simple config
