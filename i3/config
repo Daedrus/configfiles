@@ -189,11 +189,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Remove titlebar from terminal windows, everything else can have them
-for_window [class="Alacritty"] border pixel 1
-for_window [class="Alacritty"] floating_border pixel 1
+for_window [class="Alacritty"] border pixel 0
+for_window [class="Alacritty"] floating_border pixel 0
 
 # Gaps
-gaps inner 2
+gaps inner 4
 gaps outer 0
 
 # Start i3bar to display a workspace bar (plus the system information i3status
