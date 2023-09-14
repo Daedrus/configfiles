@@ -92,6 +92,7 @@
       }
     ];
     shellAliases = {
+      sudo = "sudo ";
       vi = "nvim";
       vim = "nvim";
     };
