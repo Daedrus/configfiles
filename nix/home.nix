@@ -92,7 +92,7 @@
       }
     ];
     shellAliases = {
-      sudo = "sudo ";
+      sudo = "sudo "; # https://wiki.archlinux.org/title/Sudo#Passing_aliases
       vi = "nvim";
       vim = "nvim";
     };
