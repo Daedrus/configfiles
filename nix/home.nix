@@ -108,6 +108,7 @@
       vi = "nvim";
       vim = "nvim";
     };
+    enableSyntaxHighlighting = true;
 
     # Uncomment this after upgrading to a newer home-manager version
     # This option is not available in 23.05 but is available in master
