@@ -102,6 +102,10 @@
     xclip
   ];
 
+  # This helps with running the language servers downloaded by Mason. See:
+  # https://discourse.nixos.org/t/strange-bash-script-behaviour-in-fish-shell/29545
+  programs.nix-ld.enable = true;
+
   fonts.fonts = with pkgs; [
     meslo-lgs-nf
   ];
