@@ -100,6 +100,7 @@
     wget
     gnumake42
     xclip
+    autocutsel
   ];
 
   # This helps with running the language servers downloaded by Mason. See:

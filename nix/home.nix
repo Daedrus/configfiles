@@ -14,11 +14,15 @@
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
-  home.packages = [
+  home.packages = with pkgs; [
     # The plan is to move as many of the packages as possible from the system
     # configuration in here
   ];
 
+  # For local testing before pushing to the configfiles repo I usually
+  # have nix temporarily point to a local file like this:
+  #   ".config/i3/config".source =
+  #     "/absolute/path/to/local/file";
   home.file =
     let
       wallpapers_repo = pkgs.fetchFromGitHub {
@@ -30,8 +34,8 @@
       configfiles_repo = pkgs.fetchFromGitHub {
         owner = "Daedrus";
         repo = "configfiles";
-        rev = "5b81c12";
-        sha256 = "GC3RWLV3v13mLHqesqlnmTedK2oi/+UwwL28CU2FXm8=";
+        rev = "f5f736b";
+        sha256 = "EMYTeZxV/2Bi2qPz8Pey380WPobKuuSjLP5dEtX8ozs=";
       };
     in {
       # Wallpaper
