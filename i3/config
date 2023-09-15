@@ -206,9 +206,16 @@ bar {
         tray_output primary
 }
 
+# Automatically detect monitors and resolutions
 exec_always --no-startup-id autorandr --change
 
+# Set wallpaper
 exec_always --no-startup-id feh --bg-scale --no-fehbg ~/.wallpapers/bkg5.png
+
+# Synchronize clipboards
+exec_always --no-startup-id autocutsel -f -s PRIMARY
+exec_always --no-startup-id autocutsel -f -s CLIPBOARD
+exec_always --no-startup-id autocutsel -f -s SECONDARY
 
 # catppuccin-mocha colors and theme
 set $rosewater #f5e0dc
