@@ -1,5 +1,5 @@
 require('auto-session').setup {
-    log_level = "info",
+    log_level = "error",
     auto_session_suppress_dirs = { "/", "~/" },
     auto_session_create_enabled = false,
 }
