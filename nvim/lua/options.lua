@@ -39,3 +39,6 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- Enable 24-bit RGB color
 vim.o.termguicolors = true
+
+-- Always use system clipboard
+vim.opt.clipboard = 'unnamedplus'
