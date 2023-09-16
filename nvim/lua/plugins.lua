@@ -78,7 +78,10 @@ require('lazy').setup({
   },
 
   -- Show help for keybinds
-  { 'folke/which-key.nvim' },
+  {
+    'folke/which-key.nvim',
+    opts = {}
+  },
 
   -- Highlight, edit, and navigate code
   {
@@ -110,7 +113,10 @@ require('lazy').setup({
   },
 
   -- Statusline
-  { 'nvim-lualine/lualine.nvim' },
+  {
+    'nvim-lualine/lualine.nvim',
+    opts = {}
+  },
 
   -- Session management
   { 'rmagatti/auto-session' },
