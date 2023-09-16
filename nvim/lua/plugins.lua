@@ -120,4 +120,10 @@ require('lazy').setup({
 
   -- Session management
   { 'rmagatti/auto-session' },
+
+  -- Smooth scrolling
+  {
+    'karb94/neoscroll.nvim',
+    opts = {}
+  },
 }, {})
