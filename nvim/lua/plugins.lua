@@ -28,8 +28,20 @@ require('lazy').setup({
   -- Detect tabstop and shift width automatically
   { 'tpope/vim-sleuth' },
 
-  -- Add indentation guides even on blank lines
-  { 'lukas-reineke/indent-blankline.nvim' },
+  -- Add indentation guides
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = "ibl",
+    opts = {
+      scope = {
+        enabled = false
+      },
+      indent = {
+        char = '┊',
+        highlight = "Whitespace"
+      },
+    },
+  },
 
   -- Tree file navigator
   {

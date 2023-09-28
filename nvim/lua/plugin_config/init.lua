@@ -1,5 +1,4 @@
 require('plugin_config.catppuccin')
-require('plugin_config.indent_blankline')
 require('plugin_config.telescope')
 require('plugin_config.treesitter')
 require('plugin_config.nvim-lspconfig')
