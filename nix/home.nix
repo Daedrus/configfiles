@@ -77,6 +77,7 @@
       rounded-corners-exclude = [
         "class_g = 'i3bar'"
         "class_g = 'firefox'"
+        "class_g = 'Dunst'"
       ];
     };
   };
@@ -94,17 +95,17 @@
     oh-my-zsh = {
       plugins = [
         "z"
-	"git"
-	"fzf"
-	"colored-man-pages"
+        "git"
+        "fzf"
+        "colored-man-pages"
       ];
       enable = true;
     };
     plugins = [
       {
         name = "powerlevel10k";
-	src = pkgs.zsh-powerlevel10k;
-	file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
     ];
     shellAliases = {

@@ -102,6 +102,7 @@
     xclip
     autocutsel
     xss-lock
+    dunst
   ];
 
   # This helps with running the language servers downloaded by Mason. See:
