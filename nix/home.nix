@@ -34,8 +34,8 @@
       configfiles_repo = pkgs.fetchFromGitHub {
         owner = "Daedrus";
         repo = "configfiles";
-        rev = "f5f736b";
-        sha256 = "EMYTeZxV/2Bi2qPz8Pey380WPobKuuSjLP5dEtX8ozs=";
+        rev = "68d3c30";
+        sha256 = "HZG5XCob+XY4lotN24llYvROCuDB0n6DK1MM+bxHDyI=";
       };
     in {
       # Wallpaper
@@ -49,6 +49,10 @@
         configfiles_repo + "/i3/catppuccin-mocha";
       ".config/i3status/config".source =
         configfiles_repo + "/i3status/config";
+
+      # Dunst
+      ".config/dunst/dunstrc".source =
+        configfiles_repo + "/dunst/dunstrc";
 
       # Alacritty
       ".config/alacritty/alacritty.yml".source =
