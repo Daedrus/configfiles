@@ -101,6 +101,7 @@
     gnumake42
     xclip
     autocutsel
+    xss-lock
   ];
 
   # This helps with running the language servers downloaded by Mason. See:
