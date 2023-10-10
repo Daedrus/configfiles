@@ -107,6 +107,7 @@
     autocutsel
     xss-lock
     dunst
+    drawio
   ];
 
   # This helps with running the language servers downloaded by Mason. See:
