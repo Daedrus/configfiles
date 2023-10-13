@@ -49,6 +49,7 @@ end
 --  such as jose-elias-alvarez/null-ls.nvim needs to be used. Not sure if there is a reasoning
 --  behind this or if the functionality will eventually be added to Mason.
 local servers = {
+  bashls = {},
   clangd = {},
   dockerls = {},
   docker_compose_language_service = {},

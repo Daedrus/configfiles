@@ -10,7 +10,8 @@ require('nvim-treesitter.configs').setup {
     'nix',
     'python',
     'rust',
-    'yaml'
+    'yaml',
+    'bash'
   },
 
   context = { enable = true },
