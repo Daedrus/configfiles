@@ -108,6 +108,7 @@
     xss-lock
     dunst
     drawio
+    tldr
   ];
 
   # This helps with running the language servers downloaded by Mason. See:
