@@ -42,13 +42,15 @@
       ".wallpapers/bkg5.png".source =
         wallpapers_repo + "/solids/bkg5.png";
 
-      # i3, i3 color scheme and i3status
+      # i3, i3 color scheme
       ".config/i3/config".source =
         configfiles_repo + "/i3/config";
       ".config/i3/catppuccin-mocha".source =
         configfiles_repo + "/i3/catppuccin-mocha";
-      ".config/i3status/config".source =
-        configfiles_repo + "/i3status/config";
+
+      # Polybar
+      ".config/polybar".source =
+        configfiles_repo + "/polybar";
 
       # Dunst
       ".config/dunst/dunstrc".source =
