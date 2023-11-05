@@ -34,31 +34,29 @@
       configfiles_repo = pkgs.fetchFromGitHub {
         owner = "Daedrus";
         repo = "configfiles";
-        rev = "68d3c30";
-        sha256 = "HZG5XCob+XY4lotN24llYvROCuDB0n6DK1MM+bxHDyI=";
+        rev = "ff3d766";
+        sha256 = "4o8tARVn28VnskfyCux1TK4vJ6i/DJr9ahJgPmI3YXE=";
       };
     in {
       # Wallpaper
       ".wallpapers/bkg5.png".source =
         wallpapers_repo + "/solids/bkg5.png";
 
-      # i3, i3 color scheme
-      ".config/i3/config".source =
-        configfiles_repo + "/i3/config";
-      ".config/i3/catppuccin-mocha".source =
-        configfiles_repo + "/i3/catppuccin-mocha";
+      # i3
+      ".config/i3".source =
+        configfiles_repo + "/i3";
 
       # Polybar
       ".config/polybar".source =
         configfiles_repo + "/polybar";
 
       # Dunst
-      ".config/dunst/dunstrc".source =
-        configfiles_repo + "/dunst/dunstrc";
+      ".config/dunst".source =
+        configfiles_repo + "/dunst";
 
       # Alacritty
-      ".config/alacritty/alacritty.yml".source =
-        configfiles_repo + "/alacritty/alacritty.yml";
+      ".config/alacritty".source =
+        configfiles_repo + "/alacritty";
 
       # PowerLevel10k
       ".p10k.zsh".source =
