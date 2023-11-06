@@ -109,7 +109,7 @@
     dunst
     drawio
     tldr
-    polybar
+    polybarFull
   ];
 
   # This helps with running the language servers downloaded by Mason. See:
