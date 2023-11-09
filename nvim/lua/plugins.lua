@@ -132,4 +132,7 @@ require('lazy').setup({
 
   -- Session management
   { 'rmagatti/auto-session' },
+
+  -- "ga" to get detailed character info (including Unicode character names)
+  { 'tpope/vim-characterize' },
 }, {})
