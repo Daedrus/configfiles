@@ -73,6 +73,10 @@
   # Configure console keymap
   console.keyMap = "sv-latin1";
 
+  services.logind.extraConfig = ''
+    RuntimeDirectorySize=4G
+  '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.embci = {
     isNormalUser = true;
