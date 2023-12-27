@@ -1,7 +1,0 @@
-require('plugin_config.catppuccin')
-require('plugin_config.telescope')
-require('plugin_config.treesitter')
-require('plugin_config.nvim-lspconfig')
-require('plugin_config.nvim-cmp')
-require('plugin_config.nvim-tree')
-require('plugin_config.auto-session')
