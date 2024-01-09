@@ -23,6 +23,10 @@ return {
           'bash'
         },
 
+        auto_install = false,
+        sync_install = false,
+        ignore_install = {},
+        modules = {},
         context = { enable = true },
         highlight = { enable = true },
         indent = { enable = true, disable = { 'python' } },
