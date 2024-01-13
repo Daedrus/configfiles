@@ -12,7 +12,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
     # The plan is to move as many of the packages as possible from the system
@@ -34,8 +34,8 @@
       configfiles_repo = pkgs.fetchFromGitHub {
         owner = "Daedrus";
         repo = "configfiles";
-        rev = "ff3d766";
-        sha256 = "4o8tARVn28VnskfyCux1TK4vJ6i/DJr9ahJgPmI3YXE=";
+        rev = "92cb135";
+        sha256 = "QaTLtEbYjNrF0ZfLWSXKPAx92KQ8rkuxcXCNox9T5Y4=";
       };
     in {
       # Wallpaper
@@ -118,11 +118,8 @@
       vi = "nvim";
       vim = "nvim";
     };
-    enableSyntaxHighlighting = true;
-
-    # Uncomment this after upgrading to a newer home-manager version
-    # This option is not available in 23.05 but is available in master
-    # history.ignoreAllDups = true;
+    syntaxHighlighting.enable = true;
+    history.ignoreAllDups = true;
   };
 
   home.sessionVariables = {
