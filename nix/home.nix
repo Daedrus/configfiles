@@ -34,8 +34,8 @@
       configfiles_repo = pkgs.fetchFromGitHub {
         owner = "Daedrus";
         repo = "configfiles";
-        rev = "bb8ad8c";
-        sha256 = "bmbXyqH13IAHWJi1uj5n7+zW5bBPx7t4EI20Z+SIWI0=";
+        rev = "80778fe";
+        sha256 = "JO6G2B+r8wAGuphO6/7Ee2tsNlLPs1quNbSkSstOLNk=";
       };
     in {
       # Wallpaper
@@ -87,6 +87,7 @@
         "class_g = 'firefox'"
         "class_g = 'Dunst'"
         "class_g = 'draw.io'"
+        "class_g = 'Rofi'"
       ];
     };
   };
