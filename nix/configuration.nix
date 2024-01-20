@@ -1,6 +1,9 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
+#
+# A great cheatsheet for those familiar with Ubuntu can be found here:
+# https://nixos.wiki/wiki/Ubuntu_vs._NixOS
 
 { config, pkgs, ... }:
 
@@ -62,7 +65,7 @@
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
-        dmenu
+        rofi
         i3status
         i3lock
         i3blocks

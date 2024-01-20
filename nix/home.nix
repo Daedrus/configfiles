@@ -34,8 +34,8 @@
       configfiles_repo = pkgs.fetchFromGitHub {
         owner = "Daedrus";
         repo = "configfiles";
-        rev = "92cb135";
-        sha256 = "QaTLtEbYjNrF0ZfLWSXKPAx92KQ8rkuxcXCNox9T5Y4=";
+        rev = "bb8ad8c";
+        sha256 = "bmbXyqH13IAHWJi1uj5n7+zW5bBPx7t4EI20Z+SIWI0=";
       };
     in {
       # Wallpaper
@@ -49,6 +49,10 @@
       # Polybar
       ".config/polybar".source =
         configfiles_repo + "/polybar";
+
+      # Rofi
+      ".config/rofi".source =
+        configfiles_repo + "/rofi";
 
       # Dunst
       ".config/dunst".source =
