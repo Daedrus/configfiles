@@ -1,10 +1,11 @@
 -- [ Options ]]
 
--- Set highlight on search
-vim.o.hlsearch = true
+-- Set highlight on search but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Show matching brackets
-vim.o.showmatch = true
+vim.opt.showmatch = true
 
 -- Enable "hybrid" line number mode
 -- All lines show their relative number except for current line,
@@ -13,19 +14,19 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 -- Disable mouse
-vim.o.mouse = ""
+vim.opt.mouse = ""
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 250
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
 
 -- Show signcolumn (will be filled with info from LSP)
 vim.wo.signcolumn = 'yes'
@@ -35,10 +36,20 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.opt.completeopt = 'menuone,noselect'
 
 -- Enable 24-bit RGB color
-vim.o.termguicolors = true
+vim.opt.termguicolors = true
 
 -- Always use system clipboard
 vim.opt.clipboard = 'unnamedplus'
+
+--- Highlight trailing whitespaces and non-breaking spaces
+vim.opt.list = true
+vim.opt.listchars = { trail = '·', nbsp = '␣' }
+
+-- Show which line the cursor is on
+vim.opt.cursorline = true
+
+-- Don't show the mode since it's already in the status line
+vim.opt.showmode = false
