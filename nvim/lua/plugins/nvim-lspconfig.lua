@@ -99,6 +99,7 @@ return {
         yamlls = {
           yaml = {
             keyOrdering = false,
+            customTags = "!reference sequence"
           }
         },
       }
