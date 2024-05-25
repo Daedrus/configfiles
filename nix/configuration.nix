@@ -66,6 +66,7 @@
       enable = true;
       extraPackages = with pkgs; [
         rofi
+        maim
         i3status
         i3lock
         i3blocks
