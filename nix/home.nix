@@ -12,7 +12,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  home.stateVersion = "24.05"; # Please read the comment before changing.
 
   home.packages = with pkgs; [
     # The plan is to move as many of the packages as possible from the system
@@ -34,8 +34,8 @@
       configfiles_repo = pkgs.fetchFromGitHub {
         owner = "Daedrus";
         repo = "configfiles";
-        rev = "309b946";
-        sha256 = "MqlQm+TmhttG3XfRZNX1W29fhUDFNs6bW1qkONME2Ww=";
+        rev = "f8c1017";
+        sha256 = "D+ZlZu0TUtysBdqMKmF26RfAgHhQJUSXzTGMXOm9Llo=";
       };
     in {
       # Wallpaper

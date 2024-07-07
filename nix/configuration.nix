@@ -51,15 +51,11 @@
   services.xserver = {
     enable = true;
 
-    layout = "se";
-    xkbVariant = "";
+    xkb.layout = "se";
+    xkb.variant = "";
 
     desktopManager = {
       xterm.enable = false;
-    };
-
-    displayManager = {
-      defaultSession = "none+i3";
     };
 
     windowManager.i3 = {
@@ -73,6 +69,8 @@
       ];
     };
   };
+
+  services.displayManager.defaultSession = "none+i3";
 
   # Configure console keymap
   console.keyMap = "sv-latin1";
@@ -149,6 +147,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
