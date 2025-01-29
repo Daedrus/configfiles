@@ -44,9 +44,9 @@ vim.opt.termguicolors = true
 -- Always use system clipboard
 vim.opt.clipboard = 'unnamedplus'
 
---- Highlight trailing whitespaces and non-breaking spaces
+--- Highlight tabs, trailing whitespaces and non-breaking spaces
 vim.opt.list = true
-vim.opt.listchars = { trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Show which line the cursor is on
 vim.opt.cursorline = true
